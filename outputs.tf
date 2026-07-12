@@ -1,3 +1,7 @@
+output "virtual_machine_scale_set_standby_pools_id" {
+  description = "Map of id values across all virtual_machine_scale_set_standby_pools, keyed the same as var.virtual_machine_scale_set_standby_pools"
+  value       = { for k, v in azurerm_virtual_machine_scale_set_standby_pool.virtual_machine_scale_set_standby_pools : k => v.id }
+}
 output "virtual_machine_scale_set_standby_pools_attached_virtual_machine_scale_set_id" {
   description = "Map of attached_virtual_machine_scale_set_id values across all virtual_machine_scale_set_standby_pools, keyed the same as var.virtual_machine_scale_set_standby_pools"
   value       = { for k, v in azurerm_virtual_machine_scale_set_standby_pool.virtual_machine_scale_set_standby_pools : k => v.attached_virtual_machine_scale_set_id }
