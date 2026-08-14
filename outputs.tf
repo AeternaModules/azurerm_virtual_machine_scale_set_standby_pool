@@ -8,7 +8,7 @@ output "virtual_machine_scale_set_standby_pools_attached_virtual_machine_scale_s
 }
 output "virtual_machine_scale_set_standby_pools_elasticity_profile" {
   description = "Map of elasticity_profile values across all virtual_machine_scale_set_standby_pools, keyed the same as var.virtual_machine_scale_set_standby_pools"
-  value       = { for k, v in azurerm_virtual_machine_scale_set_standby_pool.virtual_machine_scale_set_standby_pools : k => v.elasticity_profile if v.elasticity_profile != null && length(v.elasticity_profile) > 0 }
+  value       = { for k, v in azurerm_virtual_machine_scale_set_standby_pool.virtual_machine_scale_set_standby_pools : k => one(v.elasticity_profile) if v.elasticity_profile != null && length(v.elasticity_profile) > 0 }
 }
 output "virtual_machine_scale_set_standby_pools_location" {
   description = "Map of location values across all virtual_machine_scale_set_standby_pools, keyed the same as var.virtual_machine_scale_set_standby_pools"
